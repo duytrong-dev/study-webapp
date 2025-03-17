@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Register() {
     return (
         <div className="w-full h-full grid grid-cols-1 gap-4 relative lg:grid-cols-5">
-            <Link href={'/'} className="absolute left-0 top-6 z-10">
+            <Link href={'/'} className="flex justify-center items-center lg:absolute lg:left-0 lg:top-6 z-10">
                 <Image src="/logo.png" alt="logo" width={70} height={100}/>
             </Link>
 

@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function Login() {
     return (
-        <div className="w-full h-full grid grid-cols-1 gap-4 relative lg:grid-cols-5">
-            <Link href={'/'} className="absolute left-0 top-6 z-10">
+        <div className="w-full h-full grid grid-cols-1 relative lg:grid-cols-5">
+            <Link href={'/'} className="flex justify-center items-center lg:absolute lg:left-0 lg:top-6 z-10">
                 <Image src="/logo.png" alt="logo" width={70} height={100}/>
             </Link>
-            
+
             <div className="left-section w-full h-full hidden relative flex-col justify-center items-center lg:flex lg:col-span-3">
                 <div className="content flex flex-col w-[80%] gap-14 lg:-translate-y-20 xl:translate-y-0">
                     <div className="title flex flex-col gap-6">
