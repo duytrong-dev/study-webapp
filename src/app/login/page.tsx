@@ -1,3 +1,4 @@
+import { SocialButton } from "@/components/layout/SocialButton";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,17 +31,12 @@ export default function Login() {
                         <input type="text" placeholder="Nhập email..." className="w-full bg-primarycolor-blue3 border-none outline-none h-10 px-4 py-2 text-lg rounded-sm"/>
                         <div className="flex flex-col gap-2">
                             <input type="password" placeholder="Nhập mật khẩu..." className="w-full bg-primarycolor-blue3 border-none outline-none h-10 px-4 py-2 text-lg rounded-sm"/>
-                            <Link href={"/forgot-password"} className="text-xs self-end text-primarycolor-gray hover:underline">Forgor password ?</Link>
+                            <Link href={"/forgot-password"} className="text-xs self-end text-primarycolor-gray hover:underline">Quên mật khẩu ?</Link>
                         </div>
                     </div>
                     <div className="flex flex-col justify-center items-center gap-8 ">
                         <Button className="w-full text-lg h-10 px-4 py-2 bg-primarycolor-blue shadow-lg shadow-primarycolor-blue transition-all duration-300 hover:translate-y-1 hover:shadow-none hover:bg-primarycolor-blue1 hover:text-primarycolor-gray">Đăng nhập</Button>
-                        <p className="text-primarycolor-gray">hoặc tiếp tục với</p>
-                        <div className="flex gap-2">
-                            <Button className="rounded-xl bg-primarycolor-blue4 hover:bg-primarycolor-blue4"><Image src="/facebook-logo.png" alt="facebook-logo" width={30} height={30}/></Button>
-                            <Button className="rounded-xl bg-primarycolor-black hover:bg-primarycolor-black"><Image src="/ios-logo.png" alt="facebook-logo" width={30} height={30}/></Button>
-                            <Button className="rounded-xl bg-green-400 hover:bg-green-400"><Image src="/google-logo.png" alt="facebook-logo" width={30} height={30}/></Button>
-                        </div>
+                        <SocialButton/>
                     </div>
                     <div className="flex flex-col justify-center items-center gap-2 lg:hidden">
                         <p className="text-primarycolor-gray">Chưa có tài khoản?</p>
