@@ -5,8 +5,10 @@ import Link from "next/link";
 export default function Login() {
     return (
         <div className="w-full h-full grid grid-cols-1 gap-4 relative lg:grid-cols-5">
-            <Link href={'/'} className="logo absolute left-0 top-5 text-4xl font-medium z-10">Logo</Link>
-
+            <Link href={'/'} className="absolute left-0 top-6 z-10">
+                <Image src="/logo.png" alt="logo" width={70} height={100}/>
+            </Link>
+            
             <div className="left-section w-full h-full hidden relative flex-col justify-center items-center lg:flex lg:col-span-3">
                 <div className="content flex flex-col w-[80%] gap-14 lg:-translate-y-20 xl:translate-y-0">
                     <div className="title flex flex-col gap-6">
@@ -33,7 +35,7 @@ export default function Login() {
                     </div>
                     <div className="flex flex-col justify-center items-center gap-8 ">
                         <Button className="w-full text-lg h-10 px-4 py-2 bg-primarycolor-blue shadow-lg shadow-primarycolor-blue transition-all duration-300 hover:translate-y-1 hover:shadow-none hover:bg-primarycolor-blue1 hover:text-primarycolor-gray">Đăng nhập</Button>
-                        <p className="text-primarycolor-gray">or continue with</p>
+                        <p className="text-primarycolor-gray">hoặc tiếp tục với</p>
                         <div className="flex gap-2">
                             <Button className="rounded-xl bg-primarycolor-blue4 hover:bg-primarycolor-blue4"><Image src="/facebook-logo.png" alt="facebook-logo" width={30} height={30}/></Button>
                             <Button className="rounded-xl bg-primarycolor-black hover:bg-primarycolor-black"><Image src="/ios-logo.png" alt="facebook-logo" width={30} height={30}/></Button>
