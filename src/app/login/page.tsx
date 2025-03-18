@@ -1,4 +1,4 @@
-import { SocialButton } from "@/components/layout/SocialButton";
+import { SocialButton } from "@/components/custom/SocialButton";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";

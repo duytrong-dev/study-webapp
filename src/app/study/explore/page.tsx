@@ -1,6 +1,6 @@
-export default function Dashboard() {
+export default function Explore() {
     return (
-        <p>Expore</p>
+        <p>Explore</p>
     )
 }
   
