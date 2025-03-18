@@ -8,32 +8,34 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-	screens: {
-		sm: "640px",  // Small devices (phones)
-		md: "768px",  // Medium devices (tablets)
-		lg: "1024px", // Large devices (laptops)
-		xl: "1280px", // Extra large devices (desktops)
-		// "2xl": "1536px", // Extra extra large devices (rất lớn, thường là màn hình 4K)
-	},
+  	screens: {
+  		sm: '640px',
+  		md: '768px',
+  		lg: '1024px',
+  		xl: '1280px'
+  	},
   	extend: {
   		colors: {
-			primarycolor: {
-				black: "#1e1e1e",
-				white: "#ffffff",
-				blue: "#5AB2FF",
-				blue1: "#A0DEFF",
-				blue2: "#CAF4FF",
-				blue3: "rgba(90, 178, 255, 0.1)",
-				blue4: "#117bd9",
-				green: "#37cea3",
-				gray: "#838383",
-				gray1: "#5A5A5A ",
-				orange: "#ff5734",
-				purple: "#be94f5",
-				yellow: "#FFF9D0",
-				purple2: "#F0EFFF",
-				purple3: "#A7A3FF"
-			},
+  			primarycolor: {
+  				black: '#1e1e1e',
+  				white: '#ffffff',
+  				blue: '#5AB2FF',
+  				blue1: '#A0DEFF',
+  				blue2: '#CAF4FF',
+  				blue3: 'rgba(90, 178, 255, 0.1)',
+  				blue4: '#117bd9',
+  				green2: '#e9fff7',
+  				green: '#37cea3',
+  				gray: '#838383',
+  				gray1: '#5A5A5A ',
+				gray2: 'rgba(131, 131, 131, 0.2)',
+  				orange: '#ff5734',
+  				purple: '#be94f5',
+  				yellow: '#FFF9D0',
+  				yellow1: 'rgba(255, 249, 208, 0.6)',
+  				purple2: '#F0EFFF',
+  				purple3: '#A7A3FF'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -73,6 +75,16 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
   		borderRadius: {
