@@ -1,6 +1,8 @@
 export default function Study() {
     return (
-        <section>Study</section>
+        <section className="w-full h-full bg-transparent flex justify-center items-center">
+            Study
+        </section>
     )
 }
   
