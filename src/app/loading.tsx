@@ -1,11 +1,16 @@
-import Image from "next/image";
-
 export default function Loading() {
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Image src="/loading.gif" alt="loading" width={100} height={100} priority unoptimized/>
+        <div className="loading-container">
+            <div className="eduflow-logo">
+                <i className="fas fa-graduation-cap"></i>
+                <span>EduFlow Pro</span>
+            </div>
+            
+            <p className="text-xl font-bold text-slate-800 mb-2">Đang tải ứng dụng</p>
+            
+            <div className="loading-bar">
+                <div className="loading-progress"></div>
+            </div>
         </div>
     )
 }
-
-// loading tự động hiển thị khi chuyển trang

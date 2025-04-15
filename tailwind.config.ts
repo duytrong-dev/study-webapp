@@ -16,6 +16,38 @@ const config: Config = {
   	},
   	extend: {
   		colors: {
+			primary: {
+				50: '#f0f9ff',
+				100: '#e0f2fe',
+				200: '#bae6fd',
+				300: '#7dd3fc',
+				400: '#38bdf8',
+				500: '#0ea5e9',
+				600: '#0284c7',
+				700: '#0369a1',
+				800: '#075985',
+				900: '#0c4a6e',
+				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+			},
+			secondary: {
+				50: '#f5f3ff',
+				100: '#ede9fe',
+				200: '#ddd6fe',
+				300: '#c4b5fd',
+				400: '#a78bfa',
+				500: '#8b5cf6',
+				600: '#7c3aed',
+				700: '#6d28d9',
+				800: '#5b21b6',
+				900: '#4c1d95',
+				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+			},
+			dark: {
+				800: '#1e293b',
+				900: '#0f172a'
+			},
   			primarycolor: {
   				black: '#1e1e1e',
   				white: '#ffffff',
@@ -35,7 +67,8 @@ const config: Config = {
   				yellow: '#FFF9D0',
   				yellow1: 'rgba(255, 249, 208, 0.6)',
   				purple2: '#F0EFFF',
-  				purple3: '#A7A3FF'
+  				purple3: '#A7A3FF',
+				LightGrayishBlue: "#f8fafc"
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -46,14 +79,6 @@ const config: Config = {
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -88,6 +113,28 @@ const config: Config = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
+		  animation: {
+			'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+			'float': 'float 6s ease-in-out infinite',
+			'wave': 'wave 1.5s linear infinite',
+			'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+		},
+		keyframes: {
+			float: {
+				'0%, 100%': { transform: 'translateY(0)' },
+				'50%': { transform: 'translateY(-10px)' },
+			},
+			wave: {
+				'0%': { transform: 'rotate(0deg)' },
+				'10%': { transform: 'rotate(14deg)' },
+				'20%': { transform: 'rotate(-8deg)' },
+				'30%': { transform: 'rotate(14deg)' },
+				'40%': { transform: 'rotate(-4deg)' },
+				'50%': { transform: 'rotate(10deg)' },
+				'60%': { transform: 'rotate(0deg)' },
+				'100%': { transform: 'rotate(0deg)' },
+			}
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
