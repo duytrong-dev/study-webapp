@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function TopNavigationRightSide() {
     return (
         <div className="flex items-center space-x-4">
@@ -12,7 +14,7 @@ export default function TopNavigationRightSide() {
             <div className="relative ml-3">
                 <div className="flex items-center space-x-2 cursor-pointer" id="user-menu-button">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Xin chào, Trọng</span>
-                    <img className="w-8 h-8 rounded-full" src="/avatar.jpg" alt="User profile"/>
+                    <Image className="w-8 h-8 rounded-full" width={32} height={32} src="/avatar.jpg" alt="User profile"/>
                 </div>
                 {/* <!-- Dropdown menu --> */}
                 {/* <div id="user-menu" className="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 dark:bg-dark-800 border dark:border-gray-700">

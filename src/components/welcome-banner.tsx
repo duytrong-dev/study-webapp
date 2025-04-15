@@ -1,6 +1,6 @@
-import PomodoroMiniControl from "./pomodoro-mini-control";
+import PomodoroMiniControl from "./custom/pomodoro-mini-control";
 
-export default function WellcomeBanner() {
+export default function WelcomeBanner() {
     return (
         <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl shadow-sm p-6 mb-6 relative overflow-hidden">
             <div className="absolute -right-10 -bottom-10 opacity-20">

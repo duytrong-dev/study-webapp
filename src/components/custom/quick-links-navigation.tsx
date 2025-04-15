@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function QuickLinks() {
+export default function QuickLinksNavigation() {
     return (
         <div className="mb-4">
             <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Công cụ học tập</h3>

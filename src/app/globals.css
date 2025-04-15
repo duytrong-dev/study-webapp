@@ -150,3 +150,17 @@
   font-weight: 600;
   color: #0f172a;
 }
+
+/* flashcard */
+.perspective {
+  perspective: 1000px;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.transform-style {
+  transform-style: preserve-3d;
+}

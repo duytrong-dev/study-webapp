@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import SideBar from '../custom/sidebar';
+import SideBar from '../sidebar';
 import Fab from '../custom/fab';
 
 export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -12,7 +12,9 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
     return (
         <>
         { shouldHideSidebar ? (
-            children
+            <div className='flex flex-1 justify-center items-center h-screen'>
+                {children}
+            </div>
         ) : (
             <>
                 <Fab />

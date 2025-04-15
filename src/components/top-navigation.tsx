@@ -1,6 +1,6 @@
-import MobileButton from "./mobile-button";
-import SearchBar from "./search-bar";
-import TopNavigationRightSide from "./top-navigation-right-side";
+import MobileButton from "./custom/mobile-button";
+import SearchBar from "./custom/search-bar";
+import TopNavigationRightSide from "./custom/top-navigation-right-side";
 
 export default function TopNavigation() {
     return (

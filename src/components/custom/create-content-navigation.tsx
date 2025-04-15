@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function CreateContent() {
+export default function CreateContentNavigation() {
     return (
         <div className="mb-4">
             <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider ">Tạo nội dung</h3>
