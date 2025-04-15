@@ -5,7 +5,7 @@ export default function Navigation() {
     return (
         <nav className="space-y-1">
             {
-                Navigations?.map((item, index) => {
+                Navigations?.map((item) => {
                     const Icon = item.icon;
                     return (
                         <Link key={item.url} href={item.url} className="sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md">
