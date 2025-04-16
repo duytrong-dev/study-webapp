@@ -10,6 +10,7 @@ import {
   PointElement,
   Legend,
   Tooltip,
+  BarController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { useRef } from 'react';
@@ -21,7 +22,8 @@ ChartJS.register(
   LineElement,
   PointElement,
   Legend,
-  Tooltip
+  Tooltip,
+  BarController
 );
 
 const labels = ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4', 'Tuần này'];
