@@ -14,6 +14,12 @@ export type Navigation = {
     icon: LucideIcon
 }
 
+export type Navigation2  = {
+    title: string,
+    url: string,
+    icon: LucideIcon
+}
+
 export const Navigations: Navigation[] = [
     {
         title: 'Trang chủ',
