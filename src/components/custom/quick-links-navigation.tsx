@@ -13,7 +13,7 @@ export default function QuickLinksNavigation() {
                     <i className="fas fa-project-diagram text-primary-500 mr-3"></i>
                     <span>Sơ đồ tư duy</span>
                 </Link>
-                <Link href="#" className="sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <Link href="pomodoro" className="sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md">
                     <i className="fas fa-stopwatch text-primary-500 mr-3"></i>
                     <span>Pomodoro</span>
                 </Link>

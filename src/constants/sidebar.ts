@@ -22,27 +22,27 @@ export const Navigations: Navigation[] = [
     },
     {
         title: 'Khóa học',
-        url: '/',
+        url: '/courses',
         icon: Book
     },
     {
         title: 'Lịch học',
-        url: '/',
+        url: '/study-schedule',
         icon: CalendarDays
     },
     {
         title: 'Nhiệm vụ',
-        url: '/',
+        url: '/mission',
         icon: ListChecks
     },
     {
         title: 'Phân tích học tập',
-        url: '/',
+        url: '/learning-analytics',
         icon: LineChart
     },
     {
-        title: 'Bạn bè & Thử thách',
-        url: '/',
+        title: 'Bạn bè',
+        url: '/friend',
         icon: Users
     },
 

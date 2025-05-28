@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PomodoroMiniControl() {
     return (
         <div className="mt-6 md:mt-0">
@@ -9,9 +11,9 @@ export default function PomodoroMiniControl() {
                         <div className="text-xs text-white opacity-80">Làm việc</div>
                     </div>
                     <div className="flex space-x-2">
-                        <button id="mini-start" className="p-2 bg-white text-primary-600 rounded-full hover:bg-gray-100 focus:outline-none">
+                        <Link href={'/pomodoro'} id="mini-start" className="p-2 bg-white text-primary-600 rounded-full hover:bg-gray-100 focus:outline-none">
                             <i className="fas fa-play"></i>
-                        </button>
+                        </Link>
                         <button id="mini-focus" className="p-2 bg-white text-primary-600 rounded-full hover:bg-gray-100 focus:outline-none">
                             <i className="fas fa-bolt"></i>
                         </button>

@@ -1,6 +1,6 @@
 export default function Loading() {
     return (
-        <div className="loading-container">
+        <div className="container w-full h-full flex flex-col items-center justify-center bg-white">
             <div className="eduflow-logo">
                 <i className="fas fa-graduation-cap"></i>
                 <span>EduFlow Pro</span>

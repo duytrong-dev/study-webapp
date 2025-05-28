@@ -137,7 +137,7 @@ export default function DailyPatternChart() {
 
   return (
     <div className="mb-8">
-      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">
+      <h3 className="text-sm font-medium text-gray-500 mb-4">
         Thói quen học tập hàng ngày
       </h3>
       <div className="h-64 relative">
@@ -154,8 +154,8 @@ export default function DailyPatternChart() {
         />
       </div>
         {/* Tooltip Content */}
-      <div className="mt-3 p-3 bg-green-50 dark:bg-green-900 rounded-lg">
-        <p className="text-xs text-green-700 dark:text-green-300">
+      <div className="mt-3 p-3 bg-green-50 rounded-lg">
+        <p className="text-xs text-green-700">
           Bạn học hiệu quả nhất vào buổi sáng (8-10h).
         </p>
       </div>

@@ -1,4 +1,3 @@
-// components/StudyProductivityChart.tsx
 'use client';
 
 import {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import MainLayout from "@/components/layout/main-layout";
+import Fab from "@/components/custom/fab";
 
 const myFont = localFont({
     src: [
@@ -50,10 +50,9 @@ export default function RootLayout( {children} : Readonly<{ children: React.Reac
             <head>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
             </head>
-            <body className={`${myFont.className} transition-colors duration-300 bg-primarycolor-LightGrayishBlue antialiased`}>
-                <MainLayout>
-                    {children}
-                </MainLayout>
+            <body className={`${myFont.className} transition-colors duration-300 antialiased`}>
+                <Fab />
+                {children}
             </body>
         </html>
     )

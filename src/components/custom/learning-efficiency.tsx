@@ -1,6 +1,6 @@
 export default function LearningEfficiency() {
     return (
-        <div>
+        <div className="mb-8">
             <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">Hiệu quả học tập</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div className="bg-white dark:bg-dark-700 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">

@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export default function Logo() {
     return (
-        <div className="flex items-center justify-center h-16 px-4 border-gray-200">
-            <div className="flex items-center h-16 cursor-pointer">
-                <i className="fas fa-graduation-cap text-4xl text-primarycolor-blue mr-2"></i>
-                <span className="text-xl font-bold text-gray-800 ">EduFlow Pro</span>
+        <Link href="/" className="flex items-center justify-center h-16 px-4 border-gray-200 z-50">
+            <div className="flex items-center h-16 cursor-pointer text-primarycolor-blue">
+                <i className="fas fa-graduation-cap text-4xl mr-2"></i>
+                <span className="text-xl font-bold">EduFlow Pro</span>
             </div>
-        </div>
+        </Link>
     )
 }

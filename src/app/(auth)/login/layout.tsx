@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Đăng nhập",
-  description: "Trang đăng nhập",
+    title: "Đăng nhập",
+    description: "Trang đăng nhập",
 };
 
 export default function LoginLayout( {children} : Readonly<{ children: React.ReactNode }> ) {
     return (
-        <main className="container flex justify-center items-center h-screen text-primarycolor-gray1">
+        <main className="flex justify-center items-center">
             {children}
         </main>
     )
