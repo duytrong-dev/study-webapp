@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const chapters = [
     {
@@ -59,11 +60,18 @@ const chapters = [
 
 export default function CourseContentTree() {
     const [openChapter, setOpenChapter] = useState<number | null>(0);
+    const router = useRouter();
 
     return (
         <div className="bg-white dark:bg-dark-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
                 <h3 className="font-medium text-gray-800 dark:text-white">Nội dung khóa học</h3>
+                <button
+                    className="ml-4 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-semibold"
+                    onClick={() => router.push("/exercise")}
+                >
+                    Bài tập
+                </button>
             </div>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-[700px] overflow-y-auto">
                 {chapters.map((chapter, idx) => (

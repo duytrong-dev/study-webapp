@@ -1,304 +1,302 @@
+'use client';
+import { useRef, useState, useEffect } from "react";
+
+const TIMER_CONFIG = {
+    pomodoro: { label: "Pomodoro", minutes: 25, state: "Thời gian tập trung" },
+    shortBreak: { label: "Nghỉ ngắn", minutes: 5, state: "Nghỉ ngơi thư giãn" },
+    longBreak: { label: "Nghỉ dài", minutes: 15, state: "Nghỉ ngơi thư giãn" }
+};
+const CIRCLE_LENGTH = 283;
 
 export default function Pomodoro() {
-    return (
-        <div className="flex flex-1 flex-col overflow-hidden">
-            <div className="flex-1 overflow-auto p-2 transition-colors duration-300 md:p-6">
-                <div className="flex flex-col lg:flex-row gap-8">
-            {/* <!-- Left Column - Timer and Controls --> */}
-            <div className="lg:w-1/3 space-y-6">
-                {/* <!-- Timer Section --> */}
-                <div className="bg-white dark:bg-dark-800 shadow rounded-xl p-6">
-                    <div className="flex justify-center mb-6">
-                        <div className="pomodoro-timer w-64 h-64 rounded-full bg-primary-100 dark:bg-primary-900 flex flex-col items-center justify-center relative">
-                            <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e0f2fe" strokeWidth="5" />
-                                <circle id="pomodoro-progress" cx="50" cy="50" r="45" fill="none" stroke="#0ea5e9" strokeWidth="5" 
-                                        strokeDasharray="283" strokeDashoffset="283" transform="rotate(-90 50 50)" />
-                            </svg>
-                            <div id="timer-display" className="text-5xl font-bold text-primary-600 dark:text-primary-300">25:00</div>
-                            <div id="timer-state" className="text-primary-500 dark:text-primary-400 mt-2">Làm việc</div>
-                        </div>
-                    </div>
-                    
-                    <div className="flex justify-center space-x-4 mb-6">
-                        <button id="start-pomodoro" className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <i className="fas fa-play mr-2"></i> Bắt đầu
-                        </button>
-                        <button id="pause-pomodoro" className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 hidden">
-                            <i className="fas fa-pause mr-2"></i> Tạm dừng
-                        </button>
-                        <button id="reset-pomodoro" className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:bg-dark-700 dark:text-white">
-                            <i className="fas fa-redo mr-2"></i> Đặt lại
-                        </button>
-                    </div>
-                    
-                    {/* <!-- Timer Settings --> */}
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Thời gian làm việc (phút)</label>
-                            <input id="work-time" type="number" min="1" max="60" value="25" className="w-16 px-2 py-1 border border-gray-300 rounded-md dark:bg-dark-700 dark:border-gray-600"/>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Thời gian nghỉ ngắn (phút)</label>
-                            <input id="short-break-time" type="number" min="1" max="15" value="5" className="w-16 px-2 py-1 border border-gray-300 rounded-md dark:bg-dark-700 dark:border-gray-600"/>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Thời gian nghỉ dài (phút)</label>
-                            <input id="long-break-time" type="number" min="1" max="30" value="15" className="w-16 px-2 py-1 border border-gray-300 rounded-md dark:bg-dark-700 dark:border-gray-600"/>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Pomodoros trước khi nghỉ dài</label>
-                            <input id="pomodoros-before-long-break" type="number" min="1" max="10" value="4" className="w-16 px-2 py-1 border border-gray-300 rounded-md dark:bg-dark-700 dark:border-gray-600"/>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Âm báo khi hết giờ</label>
-                            <div className="relative">
-                                <select id="alarm-sound" className="appearance-none w-32 px-2 py-1 border border-gray-300 rounded-md dark:bg-dark-700 dark:border-gray-600">
-                                    <option value="bell">Chuông</option>
-                                    <option value="digital">Digital</option>
-                                    <option value="nature">Tiếng thiên nhiên</option>
-                                    <option value="none">Không có</option>
-                                </select>
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
-                                    <i className="fas fa-chevron-down"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Tự động bắt đầu phiên tiếp theo</label>
-                            <label className="relative inline-flex items-center cursor-pointer">
-                                <input id="auto-start-next" type="checkbox" className="sr-only peer" checked/>
-                                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-500"></div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                
-                {/* <!-- Task List --> */}
-                <div className="bg-white dark:bg-dark-800 shadow rounded-xl p-6">
-                    <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Danh sách công việc</h2>
-                    
-                    <div className="flex mb-4">
-                        <input id="new-task-input" type="text" placeholder="Thêm công việc mới..." className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-700 dark:border-gray-600"/>
-                        <button id="add-task-btn" className="px-4 py-2 bg-primary-500 text-white rounded-r-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <i className="fas fa-plus"></i>
-                        </button>
-                    </div>
-                    
-                    <div id="task-list" className="space-y-2 max-h-64 overflow-y-auto">
-                        {/* <!-- Task items will be added here --> */}
-                    </div>
-                    
-                    <div className="flex justify-between items-center mt-4 text-sm text-gray-500 dark:text-gray-400">
-                        <span id="tasks-completed">0 công việc đã hoàn thành</span>
-                        <button id="clear-completed" className="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300">Xóa đã hoàn thành</button>
-                    </div>
-                </div>
-            </div>
-            
-            {/* <!-- Right Column - Focus Sounds and Stats --> */}
-            <div className="lg:w-2/3 space-y-6">
-                {/* <!-- Tabs --> */}
-                <div className="bg-white dark:bg-dark-800 shadow rounded-xl overflow-hidden">
-                    <div className="border-b border-gray-200 dark:border-gray-700">
-                        <nav className="flex -mb-px">
-                            <button id="focus-sounds-tab" className="tab-underline active py-4 px-6 text-sm font-medium text-center border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
-                                <i className="fas fa-headphones mr-2"></i> Nhạc tập trung
-                            </button>
-                            <button id="stats-tab" className="tab-underline py-4 px-6 text-sm font-medium text-center border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
-                                <i className="fas fa-chart-line mr-2"></i> Thống kê
-                            </button>
-                            <button id="tips-tab" className="tab-underline py-4 px-6 text-sm font-medium text-center border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
-                                <i className="fas fa-lightbulb mr-2"></i> Mẹo học tập
-                            </button>
-                        </nav>
-                    </div>
-                    
-                    {/* <!-- Tab Content --> */}
-                    <div className="p-6">
+    const [timerType, setTimerType] = useState<"pomodoro" | "shortBreak" | "longBreak">("pomodoro");
+    const [minutes, setMinutes] = useState(TIMER_CONFIG.pomodoro.minutes);
+    const [seconds, setSeconds] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
+    const [pomodoroCount, setPomodoroCount] = useState(0);
+    const [alarmOn, setAlarmOn] = useState(true);
+    const [focusTime, setFocusTime] = useState(25);
+    const [shortBreakTime, setShortBreakTime] = useState(5);
+    const [longBreakTime, setLongBreakTime] = useState(15);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-                                                {/* <!-- Focus Sounds Content --> */}
-                        <div id="focus-sounds-content" className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* <!-- Sound Card 1 --> */}
-                                <div className="focus-sound-card bg-white dark:bg-dark-700 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden transition duration-300 ease-in-out">
-                                    <div className="video-container">
-                                        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk?rel=0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div>
-                                    <div className="p-4">
-                                        <h3 className="font-medium text-gray-900 dark:text-white mb-1">Nhạc tập trung Lofi</h3>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Nhạc không lời giúp tập trung cao độ</p>
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center">
-                                                <i className="fas fa-volume-up text-primary-500 mr-2"></i>
-                                                <input type="range" min="0" max="100" value="50" className="w-24"/>
-                                            </div>
-                                            <button className="px-3 py-1 bg-primary-500 text-white text-sm rounded-md hover:bg-primary-600">
-                                                <i className="fas fa-play mr-1"></i> Phát
-                                            </button>
+    // Timer logic
+    useEffect(() => {
+        if (!isRunning) return;
+        intervalRef.current = setInterval(() => {
+            setSeconds(prev => {
+                if (prev === 0) {
+                    if (minutes === 0) {
+                        handleComplete();
+                        return 0;
+                    }
+                    setMinutes(m => m - 1);
+                    return 59;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+        return () => clearInterval(intervalRef.current as NodeJS.Timeout);
+        // eslint-disable-next-line
+    }, [isRunning, minutes]);
+
+    // Update progress circle
+    const getProgress = () => {
+        const total =
+            timerType === "pomodoro"
+                ? 25 * 60
+                : timerType === "shortBreak"
+                ? 5 * 60
+                : 15 * 60;
+        const current = minutes * 60 + seconds;
+        return CIRCLE_LENGTH - (CIRCLE_LENGTH * current) / total;
+    };
+
+    // Tab switching
+    const switchTab = (type: "pomodoro" | "shortBreak" | "longBreak") => {
+        setTimerType(type);
+        setIsRunning(false);
+        clearInterval(intervalRef.current as NodeJS.Timeout);
+        setMinutes(TIMER_CONFIG[type].minutes);
+        setSeconds(0);
+    };
+
+    // Start, pause, reset
+    const handleStart = () => setIsRunning(true);
+    const handlePause = () => setIsRunning(false);
+    const handleReset = () => {
+        setIsRunning(false);
+        setMinutes(TIMER_CONFIG[timerType].minutes);
+        setSeconds(0);
+    };
+
+    // Complete timer
+    const handleComplete = () => {
+        setIsRunning(false);
+        clearInterval(intervalRef.current as NodeJS.Timeout);
+
+        // Play sound and notification
+        if (alarmOn) {
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
+            audio.play();
+            if (typeof window !== "undefined" && "Notification" in window) {
+                if (Notification.permission === "granted") {
+                    const message =
+                        timerType === "pomodoro"
+                            ? "Đã kết thúc thời gian học tập! Nghỉ ngơi thôi!"
+                            : "Đã hết giờ nghỉ! Bắt đầu học tập mới!";
+                    new Notification("Efudoro Pro", { body: message });
+                }
+            }
+        }
+
+        // Auto switch
+        if (timerType === "pomodoro") {
+            setPomodoroCount(c => c + 1);
+            if ((pomodoroCount + 1) % 4 === 0) {
+                switchTab("longBreak");
+            } else {
+                switchTab("shortBreak");
+            }
+        } else {
+            switchTab("pomodoro");
+        }
+    };
+
+    // Request notification permission
+    useEffect(() => {
+        if (typeof window !== "undefined" && "Notification" in window) {
+            Notification.requestPermission();
+        }
+    }, []);
+
+    return (
+        <div className="flex-1 overflow-auto p-6 bg-gray-50 transition-colors duration-300">
+            <div className="flex flex-col lg:flex-row gap-8 mb-10">
+                {/* Timer Section */}
+                <div className="w-full lg:w-8/12">
+                    <div className="bg-white rounded-2xl shadow-xl p-6 relative overflow-hidden">
+                        {/* Decorative elements */}
+                        <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary-200 opacity-20"></div>
+                        <div className="absolute -bottom-16 -left-8 w-40 h-40 rounded-full bg-secondary-200 opacity-30"></div>
+                        <div className="relative z-10">
+                            <div className="flex flex-col items-center py-6">
+                                {/* Tabs */}
+                                <div className="flex bg-gray-100 rounded-lg p-1 mb-8">
+                                    {(["pomodoro", "shortBreak", "longBreak"] as const).map(type => (
+                                        <button
+                                            key={type}
+                                            className={`px-6 py-2 rounded-lg transition-transform hover:-translate-y-0.5 font-semibold
+                                                ${timerType === type ? "bg-primary-500 text-white" : ""}
+                                            `}
+                                            onClick={() => switchTab(type)}
+                                        >
+                                            {TIMER_CONFIG[type].label}
+                                        </button>
+                                    ))}
+                                </div>
+                                {/* Timer Display */}
+                                <div className="timer-3d relative w-72 h-72">
+                                    <div className="progress-container absolute inset-0 flex flex-col items-center justify-center">
+                                        <div className="text-6xl font-bold text-gray-600 tab-animate-in animate-grow">
+                                            {`${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`}
+                                        </div>
+                                        <div className="text-xl text-primary-500 font-semibold mt-4 tab-animate-in">
+                                            {TIMER_CONFIG[timerType].state}
+                                        </div>
+                                        {/* Wave animation */}
+                                        <div className="absolute inset-0 rounded-full overflow-hidden">
+                                            <div className="wave-animation absolute inset-0 bg-gradient-to-r from-transparent via-primary-50 to-transparent opacity-30"></div>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                {/* <!-- Sound Card 2 -->/ */}
-                                <div className="focus-sound-card bg-white dark:bg-dark-700 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden transition duration-300 ease-in-out">
-                                    <div className="video-container">
-                                        <iframe src="https://www.youtube.com/embed/rUxyKA_-grg?rel=0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div>
-                                    <div className="p-4">
-                                        <h3 className="font-medium text-gray-900 dark:text-white mb-1">Tiếng mưa rơi</h3>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Tiếng mưa rơi nhẹ nhàng giúp thư giãn</p>
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center">
-                                                <i className="fas fa-volume-up text-primary-500 mr-2"></i>
-                                                <input type="range" min="0" max="100" value="50" className="w-24"/>
-                                            </div>
-                                            <button className="px-3 py-1 bg-primary-500 text-white text-sm rounded-md hover:bg-primary-600">
-                                                <i className="fas fa-play mr-1"></i> Phát
-                                            </button>
-                                        </div>
+                                    {/* Circular progress */}
+                                    <div className={`timer-ring absolute inset-0 rounded-full border-8 border-gray-100 overflow-hidden ${timerType === "pomodoro" ? "active" : "break"}`}>
+                                        <svg className="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" strokeWidth="8" />
+                                            <circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="none"
+                                                stroke="#0ea5e9"
+                                                strokeWidth="8"
+                                                strokeDasharray={CIRCLE_LENGTH}
+                                                strokeDashoffset={getProgress()}
+                                            />
+                                        </svg>
                                     </div>
                                 </div>
-                                
-                                {/* <!-- Sound Card 3 --> */}
-                                <div className="focus-sound-card bg-white dark:bg-dark-700 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden transition duration-300 ease-in-out">
-                                    <div className="video-container">
-                                        <iframe src="https://www.youtube.com/embed/1ZYbU82GVz4?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                                    </div>
-                                    <div className="p-4">
-                                        <h3 className="font-medium text-gray-900 dark:text-white mb-1">Tiếng quán cà phê</h3>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Âm thanh quán cà phê giúp sáng tạo</p>
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center">
-                                                <i className="fas fa-volume-up text-primary-500 mr-2"></i>
-                                                <input type="range" min="0" max="100" value="50" className="w-24"/>
-                                            </div>
-                                            <button className="px-3 py-1 bg-primary-500 text-white text-sm rounded-md hover:bg-primary-600">
-                                                <i className="fas fa-play mr-1"></i> Phát
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                {/* <!-- Sound Card 4 --> */}
-                                <div className="focus-sound-card bg-white dark:bg-dark-700 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden transition duration-300 ease-in-out">
-                                    <div className="video-container">
-                                        <iframe src="https://www.youtube.com/embed/ZzJ7F5N1p8s?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
-                                    </div>
-                                    <div className="p-4">
-                                        <h3 className="font-medium text-gray-900 dark:text-white mb-1">Tiếng sóng biển</h3>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Tiếng sóng biển êm dịu</p>
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center">
-                                                <i className="fas fa-volume-up text-primary-500 mr-2"></i>
-                                                <input type="range" min="0" max="100" value="50" className="w-24"/>
-                                            </div>
-                                            <button className="px-3 py-1 bg-primary-500 text-white text-sm rounded-md hover:bg-primary-600">
-                                                <i className="fas fa-play mr-1"></i> Phát
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-gray-50 dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Tìm kiếm nhạc tập trung</h3>
-                                <div className="flex">
-                                    <input type="text" placeholder="Tìm kiếm trên YouTube..." className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-800 dark:border-gray-600"/>
-                                    <button className="px-4 py-2 bg-primary-500 text-white rounded-r-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                                        <i className="fas fa-search"></i>
+                                {/* Timer Controls */}
+                                <div className="flex justify-center space-x-4 mt-10">
+                                    {!isRunning ? (
+                                        <button
+                                            className="px-8 py-3 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 flex items-center"
+                                            onClick={handleStart}
+                                        >
+                                            <i className="fas fa-play mr-2"></i> Bắt đầu
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="px-8 py-3 bg-yellow-500 text-white rounded-xl font-semibold hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 flex items-center"
+                                            onClick={handlePause}
+                                        >
+                                            <i className="fas fa-pause mr-2"></i> Tạm dừng
+                                        </button>
+                                    )}
+                                    <button
+                                        className="px-6 py-3 bg-gray-200 text-gray-800 rounded-xl font-semibold hover:bg-gray-300 focus:ring-4 focus:ring-gray-300"
+                                        onClick={handleReset}
+                                    >
+                                        <i className="fas fa-sync-alt mr-2"></i> Đặt lại
+                                    </button>
+                                    <button
+                                        id="alarm-toggle"
+                                        className="px-4 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 flex items-center"
+                                        onClick={() => setAlarmOn(a => !a)}
+                                    >
+                                        <i className={`fas ${alarmOn ? "fa-toggle-on text-green-500" : "fa-toggle-off"} text-xl mr-2`}></i>
+                                        Âm báo
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                        {/* <!-- Stats Content --> */}
-                        <div id="stats-content" className="hidden space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-4">
-                                    <div className="text-sm text-primary-600 dark:text-primary-300 mb-1">Pomodoros hôm nay</div>
-                                    <div className="text-2xl font-bold text-primary-800 dark:text-primary-200">3</div>
-                                </div>
-                                <div className="bg-green-50 dark:bg-green-900 rounded-lg p-4">
-                                    <div className="text-sm text-green-600 dark:text-green-300 mb-1">Thời gian tập trung</div>
-                                    <div className="text-2xl font-bold text-green-800 dark:text-green-200">1h 15m</div>
-                                </div>
-                                <div className="bg-purple-50 dark:bg-purple-900 rounded-lg p-4">
-                                    <div className="text-sm text-purple-600 dark:text-purple-300 mb-1">Công việc hoàn thành</div>
-                                    <div className="text-2xl font-bold text-purple-800 dark:text-purple-200">5/8</div>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-white dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-4">Thống kê tuần này</h3>
-                                <div className="h-64">
-                                    <canvas id="weeklyStatsChart"></canvas>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-white dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-4">Thời gian tập trung tốt nhất</h3>
-                                <div className="h-64">
-                                    <canvas id="productivityChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* <!-- Tips Content --> */}
-                        <div id="tips-content" className="hidden space-y-4">
-                            <div className="bg-white dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Cách sử dụng Pomodoro hiệu quả</h3>
-                                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-                                    <li>Chọn một công việc cụ thể để tập trung trong mỗi phiên Pomodoro</li>
-                                    <li>Loại bỏ mọi phiền nhiễu (tắt thông báo, để điện thoại xa)</li>
-                                    <li>Nghỉ ngơi đúng cách giữa các phiên để não bộ phục hồi</li>
-                                    <li>Sau 4 phiên làm việc, hãy nghỉ dài hơn (15-30 phút)</li>
-                                    <li>Ghi chép lại những phiên làm việc để cải thiện năng suất</li>
-                                </ul>
-                            </div>
-                            
-                            <div className="bg-white dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Mẹo tập trung cao độ</h3>
-                                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-                                    <li>Tạo không gian làm việc gọn gàng, ngăn nắp</li>
-                                    <li>Sử dụng nhạc không lời hoặc tiếng ồn trắng để che đi tiếng ồn xung quanh</li>
-                                    <li>Uống đủ nước trong khi làm việc</li>
-                                    <li>Thực hiện vài động tác thể dục nhẹ giữa các phiên nghỉ</li>
-                                    <li>Đặt mục tiêu rõ ràng cho từng phiên làm việc</li>
-                                </ul>
-                            </div>
-                            
-                            <div className="bg-white dark:bg-dark-700 rounded-lg p-4">
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Công cụ hỗ trợ học tập</h3>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
-                                    <a href="#" className="flex flex-col items-center p-3 bg-gray-50 dark:bg-dark-600 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-500">
-                                        <i className="fas fa-book text-primary-500 text-xl mb-2"></i>
-                                        <span className="text-sm text-center">Ghi chú thông minh</span>
-                                    </a>
-                                    <a href="#" className="flex flex-col items-center p-3 bg-gray-50 dark:bg-dark-600 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-500">
-                                        <i className="fas fa-project-diagram text-primary-500 text-xl mb-2"></i>
-                                        <span className="text-sm text-center">Sơ đồ tư duy</span>
-                                    </a>
-                                    <a href="#" className="flex flex-col items-center p-3 bg-gray-50 dark:bg-dark-600 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-500">
-                                        <i className="fas fa-brain text-primary-500 text-xl mb-2"></i>
-                                        <span className="text-sm text-center">Flashcards</span>
-                                    </a>
-                                    <a href="#" className="flex flex-col items-center p-3 bg-gray-50 dark:bg-dark-600 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-500">
-                                        <i className="fas fa-stopwatch text-primary-500 text-xl mb-2"></i>
-                                        <span className="text-sm text-center">Quản lý thời gian</span>
-                                    </a>
+                                {/* Task Display */}
+                                <div className="bg-gray-100 rounded-xl p-4 mt-8 w-full max-w-md">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-sm font-medium">TẬP TRUNG VÀO:</span>
+                                        <button className="text-xs text-primary-600 hover:text-primary-500">
+                                            <i className="fas fa-edit mr-1"></i> Thay đổi
+                                        </button>
+                                    </div>
+                                    <h3 className="font-medium text-gray-800 text-lg flex items-center">
+                                        <i className="fas fa-bookmark text-primary-500 mr-2"></i>
+                                        <span>Hoàn thành bài tập Python</span>
+                                    </h3>
+                                    <div className="mt-4">
+                                        <div className="text-xs text-gray-500 mb-2 flex justify-between">
+                                            <span>Tiến độ công việc</span>
+                                            <span>50%</span>
+                                        </div>
+                                        <div className="w-full bg-gray-200 rounded-full h-2">
+                                            <div className="bg-primary-500 progress-fill h-2 rounded-full" style={{ width: '50%' }}></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {/* Stats and Settings giữ nguyên */}
+                <div className="w-full lg:w-4/12">
+                    <div className="bg-white rounded-2xl shadow-xl p-6">
+                        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <h2 className="text-lg font-medium text-gray-600 dark:text-white">Cây kiến thức khóa học Python</h2>
+                        </div>
+                        <h2 className="text-xl font-bold text-primarycolor-blue mb-6">Thống kê & Cài đặt</h2>
+                        {/* Pomodoro Statistics */}
+                        <div className="mb-8">
+                            <h3 className="text-lg font-semibold text-gray-600 mb-4">Thống kê Pomodoro</h3>
+                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                <div className="bg-gray-100 p-4 rounded-xl">
+                                    <div className="text-sm text-gray-500 mb-1">Hoàn thành hôm nay</div>
+                                    <div className="text-2xl font-bold text-primarycolor-blue">3</div>
+                                </div>
+                                <div className="bg-gray-100 p-4 rounded-xl">
+                                    <div className="text-sm text-gray-500 mb-1">Tuần này</div>
+                                    <div className="text-2xl font-bold text-primarycolor-blue">12</div>
+                                </div>
+                            </div>
+                            <div className="flex justify-between items-center mb-1">
+                                <span className="text-sm font-medium">Năng suất hôm nay:</span>
+                                <span className="text-sm font-bold text-primarycolor-blue">75%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
+                                <div className="bg-primarycolor-blue h-2 rounded-full" style={{ width: '75%' }}></div>
+                            </div>
+                        </div>
+                        {/* Timing Settings */}
+                        <div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-4">Cài đặt thời gian (phút)</h3>
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="text-sm text-gray-600 mb-1 block">Thời gian tập trung</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="60"
+                                        value={focusTime}
+                                        onChange={e => setFocusTime(Number(e.target.value))}
+                                        className="w-full p-3 bg-gray-100 border-none rounded-lg focus:ring-2 focus:ring-primary-300"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="text-sm text-gray-600 mb-1 block">Thời gian nghỉ ngắn</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="60"
+                                        value={shortBreakTime}
+                                        onChange={e => setShortBreakTime(Number(e.target.value))}
+                                        className="w-full p-3 bg-gray-100 border-none rounded-lg focus:ring-2 focus:ring-primary-300"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="text-sm text-gray-600 mb-1 block">Thời gian nghỉ dài</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="60"
+                                        value={longBreakTime}
+                                        onChange={e => setLongBreakTime(Number(e.target.value))}
+                                        className="w-full p-3 bg-gray-100 border-none rounded-lg focus:ring-2 focus:ring-primary-300"
+                                    />
+                                </div>
+                            </div>
+                            <button className="w-full mt-6 py-3 bg-gray-200 rounded-lg text-gray-800 hover:bg-gray-300 font-semibold">
+                                Lưu cài đặt
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-            </div>
-        </div>
-    )
+    );
 }

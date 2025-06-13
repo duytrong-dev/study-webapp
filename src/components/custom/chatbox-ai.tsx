@@ -6,6 +6,7 @@ export default function ChatboxAI({ open, onClose }: { open: boolean; onClose: (
     const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
     const [input, setInput] = useState("");
     const boxRef = useRef<HTMLDivElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -20,6 +21,13 @@ export default function ChatboxAI({ open, onClose }: { open: boolean; onClose: (
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [open, onClose]);
+
+    // Scroll to bottom when messages change
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [messages]);
 
     const handleSend = () => {
         if (!input.trim()) return;
@@ -46,17 +54,29 @@ export default function ChatboxAI({ open, onClose }: { open: boolean; onClose: (
                             <span className="font-semibold text-primary-600">AI Chat</span>
                             <button onClick={onClose} className="text-gray-400 hover:text-red-500 text-xl">&times;</button>
                         </div>
-                        <div className="flex-1 p-4 h-64 overflow-y-auto space-y-2 bg-gray-50">
+                        <div className="flex-1 p-4 max-h-64 overflow-y-auto space-y-2 bg-gray-50">
                             {messages.length === 0 && (
                                 <div className="text-gray-400 text-sm text-center">Hãy hỏi AI bất cứ điều gì!</div>
                             )}
-                            {messages.map((msg, idx) => (
-                                <div key={idx} className={msg.role === "user" ? "text-right" : "text-left"}>
-                                    <span className={msg.role === "user" ? "inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-lg mb-1" : "inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-lg mb-1"}>
-                                        {msg.content}
-                                    </span>
-                                </div>
-                            ))}
+                            <AnimatePresence initial={false}>
+                                {messages.map((msg, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        className={msg.role === "user" ? "text-right" : "text-left"}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 20 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <span className={msg.role === "user"
+                                            ? "inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-lg mb-1"
+                                            : "inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-lg mb-1"}>
+                                            {msg.content}
+                                        </span>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                            <div ref={messagesEndRef} />
                         </div>
                         <div className="flex border-t p-2 bg-white">
                             <input
