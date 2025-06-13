@@ -1,3 +1,6 @@
+'use client';
+import { motion } from "framer-motion";
+
 const features = [
     {
         icon: <i className="fas fa-robot text-3xl text-primarycolor-blue"></i>,
@@ -47,7 +50,13 @@ export default function FeatureSection () {
     return (
         <section id="features" className="py-24 bg-gradient-to-b from-white to-indigo-50">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-20"
+                    initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
                         CÔNG CỤ HỌC TẬP ĐỘT PHÁ
                     </div>
@@ -55,18 +64,25 @@ export default function FeatureSection () {
                     <p className="text-lg text-gray-600">
                         EduFlow tích hợp các công nghệ tiên tiến nhất để tối ưu hóa trải nghiệm học tập, giúp bạn tiếp thu kiến thức nhanh hơn và hiệu quả hơn bao giờ hết.
                     </p>
-                </div>
+                </motion.div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.map((f, idx) => (
-                        <div key={idx} className="feature-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+                        <motion.div
+                            key={idx}
+                            className="feature-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100"
+                            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className={`w-16 h-16 bg-gradient-to-r ${f.bg} rounded-xl flex items-center justify-center mb-6`}>
                                 {f.icon}
                             </div>
                             <h3 className="text-xl font-bold text-gray-600 mb-3">{f.title}</h3>
                             <p className="text-gray-600 mb-6">{f.desc}</p>
                             <div className={`gradient-bar h-1 w-full rounded-full bg-gradient-to-r ${f.bar}`}></div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

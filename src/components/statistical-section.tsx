@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const counterConfig = [
     {
@@ -60,10 +61,24 @@ export default function StatisticalSection() {
 
     return (
         <div className="radial-gradient py-16">
-            <section id="counter" className="max-w-7xl mx-auto px-6 py-16">
+            <motion.section
+                id="counter"
+                className="max-w-7xl mx-auto px-6 py-16"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }}
+            >
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                     {counterConfig.map((item, idx) => (
-                        <div key={idx} className="counter-item bg-white/80 backdrop-blur rounded-2xl p-8 border border-gray-100 shadow-lg">
+                        <motion.div
+                            key={idx}
+                            className="counter-item bg-white/80 backdrop-blur rounded-2xl p-8 border border-gray-100 shadow-lg"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className={`${item.bg} rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6`}>
                                 {item.icon}
                             </div>
@@ -71,10 +86,10 @@ export default function StatisticalSection() {
                                 {new Intl.NumberFormat().format(counts[idx])}
                             </p>
                             <p className="text-gray-600">{item.label}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </section>
+            </motion.section>
         </div>
     );
 }

@@ -1,3 +1,6 @@
+'use client';
+import { motion } from "framer-motion";
+
 const devices = [
     {
         icon: <i className="fas fa-laptop text-7xl text-primarycolor-blue opacity-20"></i>,
@@ -33,7 +36,13 @@ export default function PlatformSection() {
     return (
         <section id="platform" className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-20"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
                         MỌI THIẾT BỊ - MỌI LÚC
                     </div>
@@ -41,12 +50,18 @@ export default function PlatformSection() {
                     <p className="text-lg text-gray-600">
                         Dù bạn đang ở đâu, chỉ cần có thiết bị kết nối internet, EduFlow luôn sẵn sàng cùng bạn tiến gần tới mục tiêu học tập.
                     </p>
-                </div>
+                </motion.div>
                 
                 {/* <!-- Platform Devices --> */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                     <div className="lg:order-1">
-                        <div className="mb-10">
+                        <motion.div
+                            className="mb-10"
+                            initial={{ opacity: 0, x: 80 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="flex items-center mb-4">
                                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                                     <i className="fas fa-desktop text-xl text-primarycolor-blue"></i>
@@ -56,9 +71,15 @@ export default function PlatformSection() {
                             <p className="text-gray-600">
                                 Giao diện tối ưu cho máy tính với đầy đủ công cụ quản lý học tập chuyên nghiệp, làm việc đa nhiệm mượt mà.
                             </p>
-                        </div>
+                        </motion.div>
                         
-                        <div className="mb-10">
+                        <motion.div
+                            className="mb-10"
+                            initial={{ opacity: 0, x: 80 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="flex items-center mb-4">
                                 <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
                                     <i className="fas fa-mobile-alt text-xl text-[#FF9D60]"></i>
@@ -68,9 +89,14 @@ export default function PlatformSection() {
                             <p className="text-gray-600">
                                 Giao diện được thiết kế riêng cho điện thoại, giúp bạn học tập tiện lợi trên mọi chuyến đi chỉ với thao tác chạm.
                             </p>
-                        </div>
+                        </motion.div>
                         
-                        <div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 80 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="flex items-center mb-4">
                                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
                                     <i className="fas fa-tablet-alt text-xl text-primarycolor-blue"></i>
@@ -80,7 +106,7 @@ export default function PlatformSection() {
                             <p className="text-gray-600">
                                 Khám phá khóa học cùng không gian rộng rãi trên màn hình lớn, lý tưởng cho học tập chuyên sâu và làm bài tập chi tiết.
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
                     
                     <div className="relative device-showcase">
@@ -92,7 +118,15 @@ export default function PlatformSection() {
                             </div>
                             <div className="grid grid-cols-2 gap-6 lg:gap-8 relative">
                                 {devices.map((d, idx) => (
-                                    <div className="floating" style={{ animationDelay: d.delay }} key={idx}>
+                                    <motion.div
+                                        key={idx}
+                                        className="floating"
+                                        style={{ animationDelay: d.delay }}
+                                        initial={{ opacity: 0, y: 60 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.7, delay: idx * 0.15 }}
+                                        viewport={{ once: true, amount: 0.2 }}
+                                    >
                                         <div className={`bg-gradient-to-br ${d.gradient} rounded-3xl p-4 shadow-2xl`}>
                                             <div className="bg-white rounded-2xl p-3 border-8 border-gray-800 shadow-lg">
                                                 <div className={`w-full h-64 bg-gradient-to-r ${d.bg} rounded-xl flex items-center justify-center`}>
@@ -105,7 +139,7 @@ export default function PlatformSection() {
                                                 <div className="text-center mt-4 text-sm font-medium text-gray-700">{d.label}</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>

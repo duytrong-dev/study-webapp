@@ -1,5 +1,7 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const courses = [
     {
@@ -72,7 +74,13 @@ export default function CourseSection () {
     return (
         <section id="course" className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-20"
+                    initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
                         KHÓA HỌC ĐA DẠNG
                     </div>
@@ -80,11 +88,24 @@ export default function CourseSection () {
                     <p className="text-lg text-gray-600">
                         Được hỗ trợ bởi AI, các khóa học trên EduFlow giúp bạn đạt được mục tiêu học tập nhanh hơn 37% so với phương pháp truyền thống.
                     </p>
-                </div>
+                </motion.div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {courses.map((course, idx) => (
-                        <div key={idx} className="course-card bg-white rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:-translate-y-3">
+                        <motion.div
+                            key={idx}
+                            className="course-card bg-white rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:-translate-y-3"
+                            initial={{
+                                opacity: 0,
+                                x: idx % 2 === 0 ? -100 : 100
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                x: 0
+                            }}
+                            transition={{ duration: 0.7, ease: "easeOut", delay: idx * 0.1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="relative">
                                 <Image src={course.image} 
                                     alt={course.alt} 
@@ -118,7 +139,7 @@ export default function CourseSection () {
                                     <div className={`font-bold text-lg ${course.priceColor}`}>{course.price}</div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 

@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const navLinks = [
     { href: "#", label: "Trang chủ" },
@@ -15,7 +16,12 @@ export default function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     return (
-        <nav className="bg-white/90 backdrop-blur-sm shadow-sm fixed w-full z-40 transform">
+        <motion.nav
+            className="bg-white/90 backdrop-blur-sm shadow-sm fixed w-full z-40 transform"
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
                 <div className="flex items-center cursor-pointer">
                     <i className="fas fa-graduation-cap text-3xl text-primarycolor-blue mr-3"></i>
@@ -73,6 +79,6 @@ export default function Header() {
                     <Link href="/dashboard" className="block bg-gradient-to-r from-primarycolor-blue to-[#94D0FF] hover:from-[#3B96E6] hover:to-primarycolor-blue text-white px-4 py-2 rounded-lg font-semibold shadow hover:shadow-lg transition-all">Bắt đầu ngay</Link>
                 </div>
             )}
-        </nav>
+        </motion.nav>
     )
 }

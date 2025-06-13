@@ -1,4 +1,6 @@
+'use client';
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
     return (
@@ -12,7 +14,13 @@ export default function HeroSection() {
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-2 gap-12 items-center">
                 {/* <!-- Text Content --> */}
-                <div className="text-center lg:text-left">
+                <motion.div
+                    className="text-center lg:text-left"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
                         Trợ lý học tập AI - Phiên bản thông minh 2024
                     </div>
@@ -61,10 +69,16 @@ export default function HeroSection() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 
                 {/* <!-- Hero Illustration --> */}
-                <div className="relative flex justify-center">
+                <motion.div
+                    className="relative flex justify-center"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
                     <div className="max-w-lg w-full relative floating">
                         <div className="bg-white border-2 border-white rounded-2xl hero-shadow overflow-hidden">
                             <Image src="/photo-1.avif" 
@@ -126,7 +140,7 @@ export default function HeroSection() {
                     <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-r from-[#8b5cf6] to-[#7C4EF1] rounded-full flex items-center justify-center shadow-xl floating" style={{ animationDelay: "1s" }}>
                         <i className="fas fa-rocket text-white text-xl"></i>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

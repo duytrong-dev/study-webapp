@@ -1,3 +1,6 @@
+'use client';
+import { motion } from "framer-motion";
+
 const techs = [
     {
         icon: <i className="fab fa-aws text-4xl text-primarycolor-blue"></i>,
@@ -30,7 +33,13 @@ export default function TechnologySection() {
     return (
         <section id="tech" className="py-24 bg-gradient-to-br from-blue-50 to-sky-100">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-20"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
                         CÔNG NGHỆ HIỆN ĐẠI
                     </div>
@@ -38,16 +47,23 @@ export default function TechnologySection() {
                     <p className="text-lg text-gray-600">
                         EduFlow kết hợp những công nghệ tiên tiến nhất để tạo ra môi trường học tập thông minh cho tương lai.
                     </p>
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {techs.map((tech, idx) => (
-                        <div key={idx} className="tech-card rounded-2xl p-6 text-center flex flex-col items-center">
+                        <motion.div
+                            key={idx}
+                            className="tech-card rounded-2xl p-6 text-center flex flex-col items-center"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="w-20 h-20 bg-blue-50 rounded-xl flex items-center justify-center mb-6 pulse">
                                 {tech.icon}
                             </div>
                             <h3 className="text-xl font-bold text-gray-600 mb-2">{tech.title}</h3>
                             <p className="text-gray-600 text-sm">{tech.desc}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
