@@ -227,9 +227,6 @@ export default function Pomodoro() {
                 {/* Stats and Settings giữ nguyên */}
                 <div className="w-full lg:w-4/12">
                     <div className="bg-white rounded-2xl shadow-xl p-6">
-                        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                            <h2 className="text-lg font-medium text-gray-600 dark:text-white">Cây kiến thức khóa học Python</h2>
-                        </div>
                         <h2 className="text-xl font-bold text-primarycolor-blue mb-6">Thống kê & Cài đặt</h2>
                         {/* Pomodoro Statistics */}
                         <div className="mb-8">
