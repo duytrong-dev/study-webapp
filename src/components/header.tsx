@@ -59,7 +59,13 @@ export default function Header() {
 
             {/* Mobile menu */}
             {showMobileMenu && (
-                <div className="lg:hidden bg-white/90 h-[100vh] z-40 backdrop-blur-lg shadow-md px-4 py-4 space-y-4 flex flex-col items-center">
+                <motion.div
+                    className="lg:hidden bg-white/90 h-[100vh] z-40 backdrop-blur-lg shadow-md px-4 py-4 space-y-4 flex flex-col items-center"
+                    initial={{ y: -40, opacity: 0, scale: 0.98 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={{ y: -40, opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                >
                     {navLinks.map(link => (
                         <Link
                             key={link.href}
@@ -77,7 +83,7 @@ export default function Header() {
                     ))}
                     <Link href="/login" className="block text-gray-600 hover:text-primarycolor-blue font-medium transition-colors">Đăng nhập</Link>
                     <Link href="/dashboard" className="block bg-gradient-to-r from-primarycolor-blue to-[#94D0FF] hover:from-[#3B96E6] hover:to-primarycolor-blue text-white px-4 py-2 rounded-lg font-semibold shadow hover:shadow-lg transition-all">Bắt đầu ngay</Link>
-                </div>
+                </motion.div>
             )}
         </motion.nav>
     )
