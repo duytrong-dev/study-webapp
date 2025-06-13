@@ -41,7 +41,7 @@ const myFont = localFont({
 
 export const metadata: Metadata = {
     title: "Trang chủ",
-    description: "Trang chủ của website với nội dung hấp dẫn.",
+    description: "Trang chủ của website Eduflow Pro.",
 };
 
 export default function RootLayout( {children} : Readonly<{ children: React.ReactNode }> ) {

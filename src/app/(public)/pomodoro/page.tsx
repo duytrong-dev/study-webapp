@@ -1,11 +1,7 @@
 
-import TopNavigation from "@/components/top-navigation";
-import CoursesSection from "@/components/custom/courses-section";
-
 export default function Pomodoro() {
     return (
         <div className="flex flex-1 flex-col overflow-hidden">
-            <TopNavigation/>
             <div className="flex-1 overflow-auto p-2 transition-colors duration-300 md:p-6">
                 <div className="flex flex-col lg:flex-row gap-8">
             {/* <!-- Left Column - Timer and Controls --> */}
@@ -15,9 +11,9 @@ export default function Pomodoro() {
                     <div className="flex justify-center mb-6">
                         <div className="pomodoro-timer w-64 h-64 rounded-full bg-primary-100 dark:bg-primary-900 flex flex-col items-center justify-center relative">
                             <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e0f2fe" stroke-width="5" />
-                                <circle id="pomodoro-progress" cx="50" cy="50" r="45" fill="none" stroke="#0ea5e9" stroke-width="5" 
-                                        stroke-dasharray="283" stroke-dashoffset="283" transform="rotate(-90 50 50)" />
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e0f2fe" strokeWidth="5" />
+                                <circle id="pomodoro-progress" cx="50" cy="50" r="45" fill="none" stroke="#0ea5e9" strokeWidth="5" 
+                                        strokeDasharray="283" strokeDashoffset="283" transform="rotate(-90 50 50)" />
                             </svg>
                             <div id="timer-display" className="text-5xl font-bold text-primary-600 dark:text-primary-300">25:00</div>
                             <div id="timer-state" className="text-primary-500 dark:text-primary-400 mt-2">Làm việc</div>

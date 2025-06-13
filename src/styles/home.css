@@ -1,0 +1,86 @@
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+    
+@keyframes pulse {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(90, 178, 255, 0.4),
+                   0 0 0 0 rgba(90, 178, 255, 0.2); 
+    }
+    70% { 
+        box-shadow: 0 0 0 15px rgba(90, 178, 255, 0), 
+                   0 0 0 30px rgba(90, 178, 255, 0); 
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(90, 178, 255, 0), 
+                   0 0 0 0 rgba(90, 178, 255, 0); 
+    }
+}
+
+.hero-bg-gradient {
+    background: radial-gradient(ellipse at top, rgba(90, 178, 255, 0.1), transparent 60%),
+                radial-gradient(ellipse at left, rgba(148, 208, 255, 0.15), transparent 55%),
+                radial-gradient(ellipse at right, rgba(255, 157, 96, 0.1), transparent 60%);
+}
+
+.floating {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #5AB2FF, #FF9D60);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-bounce {
+    animation: bounce 5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.icon-flip {
+    animation: flip 10s ease-in-out infinite;
+}
+
+@keyframes flip {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.icon-pulse {
+    animation: pulse 3s infinite;
+}
+
+.feature-blob {
+    position: absolute;
+    opacity: 0.3;
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-card {
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(90, 178, 255, 0.3);
+}

@@ -9,7 +9,7 @@ export default function CreateContentNavigation() {
                     <i className="fas fa-plus-circle text-primary-500 mr-3"></i>
                     <span>Khóa học thủ công</span>
                 </Link>
-                <Link href="#" className="sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md ">
+                <Link href="/create-course-by-ai" className="sidebar-item flex items-center px-3 py-2 text-sm font-medium rounded-md ">
                     <i className="fas fa-file-upload text-primary-500 mr-3"></i>
                     <span>Từ file PDF</span>
                 </Link>

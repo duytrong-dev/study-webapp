@@ -7,6 +7,8 @@ export const metadata: Metadata = {
 
 export default function CoureseLayout( {children} : Readonly<{ children: React.ReactNode }> ) {
     return (
-         <>{children}</>
+        <>
+            {children}
+        </>
     )
 }

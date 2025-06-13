@@ -1,6 +1,5 @@
 
-import WelcomeBanner from "@/components/welcome-banner";
-import TopNavigation from "@/components/top-navigation";
+import WelcomeBanner from "@/components/custom/welcome-banner";
 import StudyProductivityChart from "@/components/custom/study-productivity-chart";
 import SubjectDistributionChart from "@/components/custom/subject-distribution-chart";
 import DailyPatternChart from "@/components/custom/daily-pattern-chart";
@@ -9,8 +8,6 @@ import LeaderBoard from "@/components/custom/leader-board";
 import StudyTools from "@/components/custom/study-tools";
 import { Button } from "@/components/ui/button";
 import CreateContentCard from "@/components/custom/create-content-card";
-import Flashcards from "@/components/custom/flashcards";
-import Tree from "@/components/custom/tree";
 
 export default function DashboardPage() {
     return (
@@ -31,16 +28,12 @@ export default function DashboardPage() {
                         <StudyProductivityChart/>
                         <SubjectDistributionChart/>
                         <DailyPatternChart/>
-                        {/* <CoursesSection/> */}
-                        {/* <ChallengesSection/> */}
-                        <Tree/>
                     </div>
                 </div>
                 <div className="space-y-6">
                     <LeaderBoard/>
                     <CreateContentCard/>
                     <StudyTools/>
-                    <Flashcards/>
                 </div>
             </div>
         </div>
