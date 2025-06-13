@@ -97,13 +97,17 @@ export default function CourseSection () {
                             className="course-card bg-white rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:-translate-y-3"
                             initial={{
                                 opacity: 0,
-                                x: idx % 2 === 0 ? -100 : 100
+                                x: idx % 2 === 0 ? -200 : 200, // Trái hoặc phải
+                                scale: 0.8,
+                                rotate: idx % 2 === 0 ? -8 : 8
                             }}
                             whileInView={{
                                 opacity: 1,
-                                x: 0
+                                x: 0,
+                                scale: 1,
+                                rotate: 0
                             }}
-                            transition={{ duration: 0.7, ease: "easeOut", delay: idx * 0.1 }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: idx * 0.1 }}
                             viewport={{ once: true, amount: 0.2 }}
                         >
                             <div className="relative">

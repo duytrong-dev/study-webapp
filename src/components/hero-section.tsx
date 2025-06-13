@@ -129,17 +129,79 @@ export default function HeroSection() {
                     </div>
                     
                     {/* <!-- Floating icon elements --> */}
-                    <div className="absolute left-0 top-20 w-16 h-16 bg-gradient-to-r from-primarycolor-blue to-[#3BB2FE] rounded-full flex items-center justify-center shadow-xl icon-bounce">
+                    <motion.div
+                        className="absolute left-0 top-20 w-16 h-16 bg-gradient-to-r from-primarycolor-blue to-[#3BB2FE] rounded-full flex items-center justify-center shadow-xl icon-bounce"
+                        initial={{
+                            opacity: 0,
+                            x: [100, -60, 40, 0],
+                            y: [-80, 60, -20, 0],
+                            rotate: [0, -45, 30, 0],
+                            scale: [0.5, 1.1, 0.9, 1]
+                        }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            rotate: 0,
+                            scale: 1
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            ease: "easeOut"
+                        }}
+                    >
                         <i className="fas fa-book text-white text-xl"></i>
-                    </div>
+                    </motion.div>
                     
-                    <div className="absolute right-0 top-1/3 w-14 h-14 bg-gradient-to-r from-[#FF9D60] to-[#ff8538] rounded-full flex items-center justify-center shadow-xl floating" style={{ animationDelay: "0.5s" }}>
+                    <motion.div
+                        className="absolute right-0 top-1/3 w-14 h-14 bg-gradient-to-r from-[#FF9D60] to-[#ff8538] rounded-full flex items-center justify-center shadow-xl"
+                        initial={{
+                            opacity: 0,
+                            x: [150, -80, 60, 0],
+                            y: [-100, 50, -30, 0],
+                            rotate: [0, 60, -30, 0],
+                            scale: [0.4, 1.2, 0.8, 1]
+                        }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            rotate: 0,
+                            scale: 1
+                        }}
+                        transition={{
+                            duration: 1.3,
+                            ease: "easeOut",
+                            delay: 0.2
+                        }}
+                    >
                         <i className="fas fa-chart-line text-white text-lg"></i>
-                    </div>
+                    </motion.div>
                     
-                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-r from-[#8b5cf6] to-[#7C4EF1] rounded-full flex items-center justify-center shadow-xl floating" style={{ animationDelay: "1s" }}>
+                    <motion.div
+                        className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-r from-[#8b5cf6] to-[#7C4EF1] rounded-full flex items-center justify-center shadow-xl"
+                        initial={{
+                            opacity: 0,
+                            x: [-120, 80, -40, 0],
+                            y: [120, -60, 30, 0],
+                            rotate: [0, -60, 30, 0],
+                            scale: [0.6, 1.2, 0.7, 1]
+                        }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            rotate: 0,
+                            scale: 1
+                        }}
+                        transition={{
+                            duration: 1.4,
+                            ease: "easeOut",
+                            delay: 0.4
+                        }}
+                    >
                         <i className="fas fa-rocket text-white text-xl"></i>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
