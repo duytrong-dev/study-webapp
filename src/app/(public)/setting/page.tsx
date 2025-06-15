@@ -46,11 +46,11 @@ export default function Setting() {
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
                                                     <div> 
                                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Họ và tên</label> 
-                                                        <input type="text" value="Nguyễn Duy Trọng" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                        <input type="text" defaultValue="Nguyễn Duy Trọng" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                     </div> 
                                                     <div> 
                                                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label> 
-                                                        <input type="email" value="trongnguyen@example.com" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                        <input type="email" defaultValue="trongnguyen@example.com" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                     </div> 
                                                 </div> 
                                                  
@@ -60,18 +60,18 @@ export default function Setting() {
                                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"> 
                                                             <span className="text-gray-500 dark:text-gray-400">+84</span> 
                                                         </div> 
-                                                        <input type="tel" value="098765432" className="pl-16 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                        <input type="tel" defaultValue="098765432" className="pl-16 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                     </div> 
                                                 </div> 
                                                  
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Ngày sinh</label> 
-                                                    <input type="date" value="2004-11-26" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                    <input type="date" defaultValue="2004-11-26" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                 </div> 
                                                  
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Giới thiệu bản thân</label> 
-                                                    <textarea className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none bio-textarea">Sinh viên năm 3 ngành Công nghệ thông tin tại Đại học CNTT - TT Việt Hàn thuộc Đại học Đà Nẵng. Mong muốn trở thành một lập trình viên full-stack chuyên nghiệp.</textarea> 
+                                                    <textarea className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none bio-textarea" defaultValue={"Sinh viên năm 3 ngành Công nghệ thông tin tại Đại học CNTT - TT Việt Hàn thuộc Đại học Đà Nẵng. Mong muốn trở thành một lập trình viên full-stack chuyên nghiệp."}></textarea> 
                                                 </div> 
                                             </div> 
                                         </div> 
@@ -152,7 +152,7 @@ export default function Setting() {
                                                 {/* <!-- Toggle Switch -->  */}
                                                 <div className="flex items-center"> 
                                                     <div className="relative inline-block w-10 mr-2 align-middle select-none"> 
-                                                        <input type="checkbox" id="pomodoro-toggle" className="toggle-checkbox hidden" checked /> 
+                                                        <input type="checkbox" id="pomodoro-toggle" className="toggle-checkbox hidden" defaultChecked /> 
                                                         <label htmlFor="pomodoro-toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors"> 
                                                             <span className="h-4 w-5 block mt-0.5 ml-0.5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ease-in-out"></span> 
                                                         </label> 
@@ -164,18 +164,18 @@ export default function Setting() {
                                             <div className="mt-4 grid grid-cols-2 gap-4"> 
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Thời gian học (phút)</label> 
-                                                    <select className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                    <select defaultValue={2} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                         <option>15</option> 
-                                                        <option selected>25</option> 
+                                                        <option>25</option> 
                                                         <option>35</option> 
                                                         <option>45</option> 
                                                     </select> 
                                                 </div> 
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Thời gian nghỉ (phút)</label> 
-                                                    <select className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                    <select defaultValue={2} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                         <option>5</option> 
-                                                        <option selected>10</option> 
+                                                        <option>10</option> 
                                                         <option>15</option> 
                                                         <option>20</option> 
                                                     </select> 
@@ -183,13 +183,13 @@ export default function Setting() {
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Chu kỳ dài sau</label> 
                                                     <div className="relative"> 
-                                                        <input type="number" value="4" min="1" max="10" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                        <input type="number" defaultValue="4" min="1" max="10" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                     </div> 
                                                 </div> 
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nghỉ dài (phút)</label> 
                                                     <div className="relative"> 
-                                                        <input type="number" value="20" min="10" max="60" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
+                                                        <input type="number" defaultValue="20" min="10" max="60" className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"/> 
                                                     </div> 
                                                 </div> 
                                             </div> 
@@ -204,10 +204,10 @@ export default function Setting() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
                                                 <div> 
                                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Chủ đề</label> 
-                                                    <select className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
-                                                        <option selected value="system">Theo hệ thống</option> 
-                                                        <option value="light">Sáng</option> 
-                                                        <option value="dark">Tối</option> 
+                                                    <select defaultValue={1} className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                        <option defaultValue="system">Theo hệ thống</option> 
+                                                        <option defaultValue="light">Sáng</option> 
+                                                        <option defaultValue="dark">Tối</option> 
                                                     </select> 
                                                 </div> 
                                                 <div> 
@@ -263,9 +263,9 @@ export default function Setting() {
                                                                 <h5 className="font-medium">Hồ sơ cá nhân</h5> 
                                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Ai có thể xem hồ sơ của bạn</p> 
                                                             </div> 
-                                                            <select className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                            <select defaultValue={2} className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                                 <option>Chỉ mình tôi</option> 
-                                                                <option selected>Bạn học</option> 
+                                                                <option >Bạn học</option> 
                                                                 <option>Công khai</option> 
                                                             </select> 
                                                         </div> 
@@ -277,9 +277,9 @@ export default function Setting() {
                                                                 <h5 className="font-medium">Hoạt động học tập</h5> 
                                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Ai có thể xem bạn đang học</p> 
                                                             </div> 
-                                                            <select className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                            <select defaultValue={2} className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                                 <option>Chỉ mình tôi</option> 
-                                                                <option selected>Bạn bè</option> 
+                                                                <option >Bạn bè</option> 
                                                                 <option>Bạn học</option> 
                                                             </select> 
                                                         </div> 
@@ -300,9 +300,9 @@ export default function Setting() {
                                                                 <h5 className="font-medium">Khoá học của tôi</h5> 
                                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Ai có thể xem khoá học bạn đang học</p> 
                                                             </div> 
-                                                            <select className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                            <select defaultValue={2} className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                                 <option>Chỉ mình tôi</option> 
-                                                                <option selected>Bạn học</option> 
+                                                                <option >Bạn học</option> 
                                                                 <option>Công khai</option> 
                                                             </select> 
                                                         </div> 
@@ -314,9 +314,9 @@ export default function Setting() {
                                                                 <h5 className="font-medium">Thành tích học tập</h5> 
                                                                 <p className="text-sm text-gray-600 dark:text-gray-400">Ai có thể xem thành tích của bạn</p> 
                                                             </div> 
-                                                            <select className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
+                                                            <select defaultValue={2} className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1 focus:ring-2 focus:ring-primary-500 focus:outline-none"> 
                                                                 <option>Chỉ mình tôi</option> 
-                                                                <option selected>Bạn bè</option> 
+                                                                <option >Bạn bè</option> 
                                                                 <option>Công khai</option> 
                                                             </select> 
                                                         </div> 
