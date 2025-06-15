@@ -75,17 +75,17 @@ function renderChapter(chapter: Chapter, isChild = false) {
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{chapter.type}</div>
                 {chapter.status === "completed" && (
                     <div className="mt-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-2 py-1 rounded-full">
-                        Đã hoàn thành
+                        Cơ bản
                     </div>
                 )}
                 {chapter.status === "active" && (
                     <div className="mt-2 text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded-full">
-                        Đang học
+                        Trung bình 
                     </div>
                 )}
                 {chapter.status === "locked" && (
                     <div className="mt-2 text-xs bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 px-2 py-1 rounded-full">
-                        Chưa mở khóa
+                        Nâng cao
                     </div>
                 )}
             </div>

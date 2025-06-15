@@ -4,29 +4,29 @@ import { motion } from "framer-motion";
 
 const testimonials = [
     {
-        name: "Trần Minh Anh",
+        name: "Nguyễn Duy Trọng",
         avatar: "/user-3.jpg",
         alt: "Student",
         stars: 5,
-        comment: "Hệ thống AI của EduFlow đã thay đổi hoàn toàn cách học của tôi. Tính năng tạo câu hỏi từ tài liệu giúp tôi tiết kiệm 3 giờ học mỗi tuần!",
+        comment: "Hệ thống AI của Eduflow Pro đã thay đổi hoàn toàn cách học của tôi. Tính năng tạo câu hỏi từ tài liệu giúp tôi tiết kiệm 3 giờ học mỗi tuần!",
         badge: { text: "Sinh viên FPT", bg: "bg-blue-100", textColor: "text-primarycolor-blue" },
         bgCircle: "bg-primarycolor-blue/5"
     },
     {
-        name: "Nguyễn Văn Tuấn",
+        name: "Nguyễn Trần Anh Khôi",
         avatar: "/user-1.jpg",
         alt: "Teacher",
         stars: 4.5,
-        comment: "Là giảng viên, tôi dùng EduFlow để soạn bài và tạo khóa học. AI tạo câu hỏi từ tài liệu đã tiết kiệm cho tôi hàng giờ soạn bài mỗi tuần.",
+        comment: "Là giảng viên, tôi dùng Eduflow Pro để soạn bài và tạo khóa học. AI tạo câu hỏi từ tài liệu đã tiết kiệm cho tôi hàng giờ soạn bài mỗi tuần.",
         badge: { text: "Giảng viên Đại học", bg: "bg-orange-100", textColor: "text-[#FF9D60]" },
         bgCircle: "bg-[#FF9D60]/5"
     },
     {
-        name: "Lê Thị Hương",
+        name: "Nguyễn Phan Tuyết Trinh",
         avatar: "/user-2.jpg",
         alt: "Professional",
         stars: 5,
-        comment: "Với EduFlow, tôi có thể học ở bất kỳ đâu chỉ từ điện thoại. Tính năng đồng bộ cho phép tôi liền mạch chuyển đổi giữa làm việc và học tập.",
+        comment: "Với Eduflow Pro, tôi có thể học ở bất kỳ đâu chỉ từ điện thoại. Tính năng đồng bộ cho phép tôi liền mạch chuyển đổi giữa làm việc và học tập.",
         badge: { text: "Marketing Manager", bg: "bg-violet-100", textColor: "text-[#8b5cf6]" },
         bgCircle: "bg-[#8b5cf6]/5"
     }

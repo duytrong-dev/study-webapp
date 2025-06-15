@@ -48,7 +48,7 @@ export default function PlatformSection() {
                     </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-gray-600">Đồng hành cùng bạn trên mọi nền tảng</h2>
                     <p className="text-lg text-gray-600">
-                        Dù bạn đang ở đâu, chỉ cần có thiết bị kết nối internet, EduFlow luôn sẵn sàng cùng bạn tiến gần tới mục tiêu học tập.
+                        Dù bạn đang ở đâu, chỉ cần có thiết bị kết nối internet, Eduflow Pro luôn sẵn sàng cùng bạn tiến gần tới mục tiêu học tập.
                     </p>
                 </motion.div>
                 

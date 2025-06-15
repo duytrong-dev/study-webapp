@@ -62,7 +62,7 @@ export default function FeatureSection () {
                     </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-gray-600">Chuyển đổi cách bạn học tập</h2>
                     <p className="text-lg text-gray-600">
-                        EduFlow tích hợp các công nghệ tiên tiến nhất để tối ưu hóa trải nghiệm học tập, giúp bạn tiếp thu kiến thức nhanh hơn và hiệu quả hơn bao giờ hết.
+                        Eduflow Pro tích hợp các công nghệ tiên tiến nhất để tối ưu hóa trải nghiệm học tập, giúp bạn tiếp thu kiến thức nhanh hơn và hiệu quả hơn bao giờ hết.
                     </p>
                 </motion.div>
                 

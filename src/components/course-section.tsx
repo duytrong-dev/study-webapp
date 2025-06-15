@@ -86,7 +86,7 @@ export default function CourseSection () {
                     </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-gray-600">Khám phá thế giới kiến thức không giới hạn</h2>
                     <p className="text-lg text-gray-600">
-                        Được hỗ trợ bởi AI, các khóa học trên EduFlow giúp bạn đạt được mục tiêu học tập nhanh hơn 37% so với phương pháp truyền thống.
+                        Được hỗ trợ bởi AI, các khóa học trên Eduflow Pro giúp bạn đạt được mục tiêu học tập nhanh hơn 37% so với phương pháp truyền thống.
                     </p>
                 </motion.div>
                 

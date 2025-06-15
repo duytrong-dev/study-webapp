@@ -22,13 +22,13 @@ export default function HeroSection() {
                     viewport={{ once: true }}
                 >
                     <div className="inline-block bg-gradient-to-r from-blue-100 to-sky-100 text-primarycolor-blue text-sm font-bold px-4 py-1.5 rounded-full mb-6">
-                        Trợ lý học tập AI - Phiên bản thông minh 2024
+                        Trợ lý học tập AI - Phiên bản thông minh 2025
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gray-600">
                         Tăng tốc học tập cùng<span className="gradient-text"> trợ lý thông minh AI</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-10">
-                        EduFlow là nền tảng học tập đầu tiên tích hợp trợ lý AI đa chức năng giúp bạn tối ưu thời gian, cá nhân hoá lộ trình học và nắm vững kiến thức nhanh gấp đôi.
+                        Eduflow Pro là nền tảng học tập đầu tiên tích hợp trợ lý AI đa chức năng giúp bạn tối ưu thời gian, cá nhân hoá lộ trình học và nắm vững kiến thức nhanh gấp đôi.
                     </p>
                     
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center lg:justify-start">

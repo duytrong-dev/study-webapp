@@ -29,7 +29,7 @@ export default function CTASection() {
                         transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
                         viewport={{ once: true, amount: 0.2 }}
                     >
-                        Trải nghiệm EduFlow ngay hôm nay cùng 250.000+ người học. Dùng thử miễn phí trợ lý AI và nhận ưu đãi đặc biệt khi đăng ký.
+                        Trải nghiệm Eduflow Pro ngay hôm nay cùng 250.000+ người học. Dùng thử miễn phí trợ lý AI và nhận ưu đãi đặc biệt khi đăng ký.
                     </motion.p>
                     
                     <motion.div
