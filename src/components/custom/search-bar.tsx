@@ -1,7 +1,7 @@
 export default function SearchBar() {
     return (
-        <div className="flex-1 max-w-md ml-4 md:ml-6 hidden lg:flex">
-            <div className="relative">
+        <div className="flex-1 w-[24rem] md:w-[28rem] lg:max-w-lg ml-4 md:ml-6 hidden lg:flex">
+            <div className="relative w-full">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <i className="fas fa-search text-gray-400"></i>
                 </div>

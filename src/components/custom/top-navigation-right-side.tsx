@@ -50,7 +50,7 @@ export default function TopNavigationRightSide() {
                 <i className="fas fa-trophy"></i>
                 <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-yellow-500"></span>
             </button>
-            <div className="relative ml-3" ref={menuRef}>
+            <div className="relative ml-3 hidden lg:block" ref={menuRef}>
                 <div
                     className="flex items-center space-x-2 cursor-pointer"
                     id="user-menu-button"
