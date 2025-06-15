@@ -1,3 +1,5 @@
+import CourseProgress from "@/components/custom/course-progress"
+
 export default function CoursesIdDoc() {
     return (
         <div className="flex flex-1 flex-col overflow-hidden">
@@ -24,6 +26,8 @@ export default function CoursesIdDoc() {
                                 </button>
                             </div>
                         </div>
+
+                        <CourseProgress />
 
                         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                             <div className="flex">
