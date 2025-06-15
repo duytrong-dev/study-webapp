@@ -89,19 +89,22 @@ export default function LessonContent() {
                     <p>Python sử dụng thụt lề để xác định khối lệnh thay vì dấu ngoặc nhọn như nhiều ngôn ngữ khác.</p>
                     
                     <div className="bg-gray-800 rounded-lg p-4 my-4 overflow-x-auto">
-                        <pre><code className="text-sm text-gray-300"># Đây là chương trình Python đầu tiên
- print(&quot;Xin chào, Python!&quot;)
- 
- # Khai báo biến
- x = 10
- y = 20
- tong = x + y
- 
- # Câu lệnh điều kiện
- if tong &gt; 30:
-     print(&quot;Tổng lớn hơn 30&quot;)
- else:
-     print(&quot;Tổng nhỏ hơn hoặc bằng 30&quot;)</code>
+                        <pre>
+                            <code className="text-sm text-gray-300">
+                                # Đây là chương trình Python đầu tiên
+                                print(&quot;Xin chào, Python!&quot;)
+                                
+                                # Khai báo biến
+                                x = 10
+                                y = 20
+                                tong = x + y
+                                
+                                # Câu lệnh điều kiện
+                                if tong &gt; 30:
+                                    print(&quot;Tổng lớn hơn 30&quot;)
+                                else:
+                                    print(&quot;Tổng nhỏ hơn hoặc bằng 30&quot;)
+                            </code>
                         </pre>
                     </div>
                     

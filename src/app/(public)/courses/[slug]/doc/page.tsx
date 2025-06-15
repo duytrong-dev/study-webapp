@@ -56,11 +56,11 @@ export default function CoursesIdDoc() {
                                 <pre className="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto">
                                     <code>
                                         # In ra màn hình
-                                        print("Xin chào thế giới!")
+                                        print(&quot;Xin chào thế giới!&quot;)
                                         
                                         # Khai báo biến
-                                        name = "Python"
-                                        print("Tôi đang học", name)
+                                        name = &quot;Python&quot;
+                                        print(&quot;Tôi đang học&quot;, name)
                                     </code>
                                 </pre>
                             </div>
